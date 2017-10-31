@@ -105,7 +105,7 @@ controller.on('slash_command', function (slashCommand, message) {
 
             // If we made it here, just echo what the user typed back at them
             //TODO You do it!
-            while (message.text === "tomato") {
+            while (message.text === "/echo") {
               slashCommand.replyPublic(message, "Starting timer! Crunch time.", function() {
                   slashCommand.replyPublicDelayed(message, "Time is up! Take a break");
               });
