@@ -105,9 +105,12 @@ controller.on('slash_command', function (slashCommand, message) {
 
             // If we made it here, just echo what the user typed back at them
             //TODO You do it!
-            slashCommand.replyPublic(message, "1", function() {
-                slashCommand.replyPublicDelayed(message, "2").then(slashCommand.replyPublicDelayed(message, "3"));
-            });
+            while (message.text === "tomato") {
+              slashCommand.replyPublic(message, "Starting timer! Crunch time.", function() {
+                  slashCommand.replyPublicDelayed(message, "Time is up! Take a break");
+              });
+            }
+
 
             break;
         default:
@@ -117,4 +120,3 @@ controller.on('slash_command', function (slashCommand, message) {
 
 })
 ;
-
