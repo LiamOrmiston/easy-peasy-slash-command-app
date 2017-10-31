@@ -88,7 +88,7 @@ controller.setupWebserver(process.env.PORT, function (err, webserver) {
 controller.on('slash_command', function (slashCommand, message) {
 
     switch (message.command) {
-        case "/echo": //handle the `/echo` slash command. We might have others assigned to this app too!
+        case "/tt": //handle the `/tt` slash command. We might have others assigned to this app too!
             // The rules are simple: If there is no text following the command, treat it as though they had requested "help"
             // Otherwise just echo back to them what they sent us.
 
@@ -98,17 +98,19 @@ controller.on('slash_command', function (slashCommand, message) {
             // if no text was supplied, treat it as a help command
             if (message.text === "" || message.text === "help") {
                 slashCommand.replyPrivate(message,
-                    "I echo back what you tell me. " +
-                    "Try typing `/echo hello` to see.");
+                    "I'm a pomodoro timer. " +
+                    "Try typing `/tt start` to start a timer.");
                 return;
             }
 
             // If we made it here, just echo what the user typed back at them
             //TODO You do it!
-            while (message.text === "/echo") {
-              slashCommand.replyPublic(message, "Starting timer! Crunch time.", function() {
-                  slashCommand.replyPublicDelayed(message, "Time is up! Take a break");
-              });
+            while (message.text === "start") {
+              setTimeout(function() { slashCommand.replyPrivate(message, "Starting timer! Crunch time."); }, 5000);
+              setTimeout(function() { slashCommand.replyPrivate(message, "Take a break!"); }, 5000);
+            }
+            if (message.text === "stop") {
+              slashCommand.replyPrivate(message, "Timer stopped.");
             }
 
 
