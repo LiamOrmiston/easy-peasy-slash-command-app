@@ -105,9 +105,12 @@ controller.on('slash_command', function (slashCommand, message) {
 
             // If we made it here, just echo what the user typed back at them
             //TODO You do it!
-            while (message.text === "start") {
-              setTimeout(function() { slashCommand.replyPrivate(message, "Starting timer! Crunch time."); }, 5000);
+            if (message.text === "start") {
+              slashCommand.replyPrivate(message, "Starting timer! Crunch time.");
+              while (message.text === "start") {
               setTimeout(function() { slashCommand.replyPrivate(message, "Take a break!"); }, 5000);
+              setTimeout(function() { slashCommand.replyPrivate(message, "Break is over. Back to work!"); }, 5000);
+              }
             }
             if (message.text === "stop") {
               slashCommand.replyPrivate(message, "Timer stopped.");
