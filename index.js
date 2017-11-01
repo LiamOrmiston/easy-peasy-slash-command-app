@@ -107,10 +107,8 @@ controller.on('slash_command', function (slashCommand, message) {
             //TODO You do it!
             if (message.text === "start") {
               slashCommand.replyPrivate(message, "Starting timer! Crunch time.");
-              while (message.text === "start") {
               setTimeout(function() { slashCommand.replyPrivate(message, "Take a break!"); }, 5000);
               setTimeout(function() { slashCommand.replyPrivate(message, "Break is over. Back to work!"); }, 5000);
-              }
             }
             if (message.text === "stop") {
               slashCommand.replyPrivate(message, "Timer stopped.");
